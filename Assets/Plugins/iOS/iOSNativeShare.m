@@ -82,16 +82,18 @@ void ShowAlertMessage (NSString *title, NSString *message){
 			
 			if([path hasPrefix:@"http"])
 			{
-				NSURL *url = [NSURL URLWithString:path];
-				NSError *error = nil;
-				NSData *dataImage = [NSData dataWithContentsOfURL:url options:0 error:&error];
-				
-				if (!error) {
-					UIImage *imageFromUrl = [UIImage imageWithData:dataImage];
-					[items addObject:imageFromUrl];
-				} else {
-					[items addObject:url];
-				}
+        NSURL *url = [NSURL URLWithString:path];
+        [items addObject:url];
+        /*
+         NSError *error = nil;
+         NSData *dataImage = [NSData dataWithContentsOfURL:url options:0 error:&error];
+         
+         if (!error) {
+         UIImage *imageFromUrl = [UIImage imageWithData:dataImage];
+         [items addObject:imageFromUrl];
+         } else {
+         [items addObject:url];
+         }*/
 			}
 			else if ( [self isStringValideBase64:path]){
                 NSData* imageBase64Data = [[NSData alloc]initWithBase64EncodedString:path options:0];
